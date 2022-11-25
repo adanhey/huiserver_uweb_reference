@@ -2,112 +2,148 @@
   "uid" : "b1a8273437954620fa374b796ffaacdd",
   "name" : "behaviors",
   "children" : [ {
-    "name" : "test_product_save",
-    "uid" : "385438070102999",
-    "parentUid" : "b1a8273437954620fa374b796ffaacdd",
-    "status" : "passed",
-    "time" : {
-      "start" : 1669369867789,
-      "stop" : 1669369867973,
-      "duration" : 184
-    },
-    "flaky" : false,
-    "parameters" : [ ]
+    "name" : "添加产品",
+    "children" : [ {
+      "name" : "test_product_save",
+      "uid" : "30a8b6ae192fc6ee",
+      "parentUid" : "77bebe922c4a482e7669975330af6d15",
+      "status" : "passed",
+      "time" : {
+        "start" : 1669370657690,
+        "stop" : 1669370657946,
+        "duration" : 256
+      },
+      "flaky" : false,
+      "parameters" : [ ]
+    } ],
+    "uid" : "77bebe922c4a482e7669975330af6d15"
   }, {
-    "name" : "test_two",
-    "uid" : "ce80567a288d6b3e",
-    "parentUid" : "b1a8273437954620fa374b796ffaacdd",
-    "status" : "passed",
-    "time" : {
-      "start" : 1669369867975,
-      "stop" : 1669369868455,
-      "duration" : 480
-    },
-    "flaky" : false,
-    "parameters" : [ ]
+    "name" : "产品更新及删除",
+    "children" : [ {
+      "name" : "test_two",
+      "uid" : "4977bdd6744828f",
+      "parentUid" : "779e12f7177f8e77f3652844360e441c",
+      "status" : "passed",
+      "time" : {
+        "start" : 1669370657948,
+        "stop" : 1669370658467,
+        "duration" : 519
+      },
+      "flaky" : false,
+      "parameters" : [ ]
+    } ],
+    "uid" : "779e12f7177f8e77f3652844360e441c"
   }, {
-    "name" : "test_three",
-    "uid" : "757a15cadc30e32e",
-    "parentUid" : "b1a8273437954620fa374b796ffaacdd",
-    "status" : "passed",
-    "time" : {
-      "start" : 1669369868457,
-      "stop" : 1669369868598,
-      "duration" : 141
-    },
-    "flaky" : false,
-    "parameters" : [ ]
+    "name" : "新增型号",
+    "children" : [ {
+      "name" : "test_three",
+      "uid" : "21fca3e321e3348a",
+      "parentUid" : "5bf1b17401be5f9925b46dcb8365496a",
+      "status" : "passed",
+      "time" : {
+        "start" : 1669370658470,
+        "stop" : 1669370658641,
+        "duration" : 171
+      },
+      "flaky" : false,
+      "parameters" : [ ]
+    } ],
+    "uid" : "5bf1b17401be5f9925b46dcb8365496a"
   }, {
-    "name" : "test_four",
-    "uid" : "bb9e104169fdb332",
-    "parentUid" : "b1a8273437954620fa374b796ffaacdd",
-    "status" : "passed",
-    "time" : {
-      "start" : 1669369868600,
-      "stop" : 1669369868931,
-      "duration" : 331
-    },
-    "flaky" : false,
-    "parameters" : [ ]
+    "name" : "更新型号",
+    "children" : [ {
+      "name" : "test_four",
+      "uid" : "b19c8e9539a42832",
+      "parentUid" : "5b70af9799b2149b0f2bcb2a414c2b6e",
+      "status" : "passed",
+      "time" : {
+        "start" : 1669370658649,
+        "stop" : 1669370658937,
+        "duration" : 288
+      },
+      "flaky" : false,
+      "parameters" : [ ]
+    } ],
+    "uid" : "5b70af9799b2149b0f2bcb2a414c2b6e"
   }, {
-    "name" : "test_five",
-    "uid" : "1e9ade7193247d6a",
-    "parentUid" : "b1a8273437954620fa374b796ffaacdd",
-    "status" : "passed",
-    "time" : {
-      "start" : 1669369868933,
-      "stop" : 1669369869417,
-      "duration" : 484
-    },
-    "flaky" : false,
-    "parameters" : [ ]
+    "name" : "excel导入型号及删除型号",
+    "children" : [ {
+      "name" : "test_five",
+      "uid" : "e7653c8dd1610de1",
+      "parentUid" : "492425bb5265a13c95b89bded92b5b8a",
+      "status" : "passed",
+      "time" : {
+        "start" : 1669370658939,
+        "stop" : 1669370659292,
+        "duration" : 353
+      },
+      "flaky" : false,
+      "parameters" : [ ]
+    } ],
+    "uid" : "492425bb5265a13c95b89bded92b5b8a"
   }, {
-    "name" : "test_six",
-    "uid" : "696ce5af7e61156d",
-    "parentUid" : "b1a8273437954620fa374b796ffaacdd",
-    "status" : "broken",
-    "time" : {
-      "start" : 1669369869419,
-      "stop" : 1669369869593,
-      "duration" : 174
-    },
-    "flaky" : false,
-    "parameters" : [ ]
+    "name" : "客户创建、更新删除",
+    "children" : [ {
+      "name" : "test_six",
+      "uid" : "610acf398646298e",
+      "parentUid" : "39ca5d965afabc9f744289553c806d11",
+      "status" : "broken",
+      "time" : {
+        "start" : 1669370659295,
+        "stop" : 1669370659487,
+        "duration" : 192
+      },
+      "flaky" : false,
+      "parameters" : [ ]
+    } ],
+    "uid" : "39ca5d965afabc9f744289553c806d11"
   }, {
-    "name" : "test_seven",
-    "uid" : "78f026b20ca7815b",
-    "parentUid" : "b1a8273437954620fa374b796ffaacdd",
-    "status" : "passed",
-    "time" : {
-      "start" : 1669369869716,
-      "stop" : 1669369871164,
-      "duration" : 1448
-    },
-    "flaky" : false,
-    "parameters" : [ ]
+    "name" : "excel导入客户及删除",
+    "children" : [ {
+      "name" : "test_seven",
+      "uid" : "eaf249cae3639e24",
+      "parentUid" : "16e833028a46247142a58f91c29cb5d0",
+      "status" : "passed",
+      "time" : {
+        "start" : 1669370659613,
+        "stop" : 1669370661227,
+        "duration" : 1614
+      },
+      "flaky" : false,
+      "parameters" : [ ]
+    } ],
+    "uid" : "16e833028a46247142a58f91c29cb5d0"
   }, {
-    "name" : "test_eight",
-    "uid" : "b099507e72f1f273",
-    "parentUid" : "b1a8273437954620fa374b796ffaacdd",
-    "status" : "passed",
-    "time" : {
-      "start" : 1669369871166,
-      "stop" : 1669369872046,
-      "duration" : 880
-    },
-    "flaky" : false,
-    "parameters" : [ ]
+    "name" : "员工新增、更新、删除",
+    "children" : [ {
+      "name" : "test_eight",
+      "uid" : "4050929f8fa059bc",
+      "parentUid" : "8758164aaa50def4c0c72c1704992619",
+      "status" : "passed",
+      "time" : {
+        "start" : 1669370661230,
+        "stop" : 1669370662063,
+        "duration" : 833
+      },
+      "flaky" : false,
+      "parameters" : [ ]
+    } ],
+    "uid" : "8758164aaa50def4c0c72c1704992619"
   }, {
-    "name" : "test_nine",
-    "uid" : "48a0743b18ae076e",
-    "parentUid" : "b1a8273437954620fa374b796ffaacdd",
-    "status" : "passed",
-    "time" : {
-      "start" : 1669369872048,
-      "stop" : 1669369872384,
-      "duration" : 336
-    },
-    "flaky" : false,
-    "parameters" : [ ]
+    "name" : "事件查询、确认",
+    "children" : [ {
+      "name" : "test_nine",
+      "uid" : "861d7fad7a100527",
+      "parentUid" : "b059ffbf8c440e73981d1c703ae4a871",
+      "status" : "passed",
+      "time" : {
+        "start" : 1669370662065,
+        "stop" : 1669370662525,
+        "duration" : 460
+      },
+      "flaky" : false,
+      "parameters" : [ ]
+    } ],
+    "uid" : "b059ffbf8c440e73981d1c703ae4a871"
   } ]
 }

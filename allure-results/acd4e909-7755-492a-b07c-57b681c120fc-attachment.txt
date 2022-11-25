@@ -1,4 +1,0 @@
-DEBUG    uweb_reference:test_case.py:41 日志时间：2022-11-25 17:51:08.929633
-DEBUG    uweb_reference:test_case.py:42 请求url：{'productType': '750031334284808192', 'productTypeName': '三边封制袋机', 'workVoltage': '750031782576214016', 'workVoltageName': '380V/50HZ', 'machinePower': '1', 'modelDesc': '2022-11-25 09:51:06', 'ids': ['1592776355765248002', '769624289390665728', '771120280707248128', '770701839080660992', '761685995466240000'], 'systemField': 1}
-DEBUG    uweb_reference:test_case.py:43 请求数据：https://huiservertest1.iotdataserver.net/es/productModel/batchUpdate
-DEBUG    uweb_reference:test_case.py:44 请求结果：{"code":200,"msg":"操作成功!"}

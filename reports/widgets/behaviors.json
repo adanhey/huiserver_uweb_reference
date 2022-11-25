@@ -1,4 +1,103 @@
 {
   "total" : 9,
-  "items" : [ ]
+  "items" : [ {
+    "uid" : "39ca5d965afabc9f744289553c806d11",
+    "name" : "客户创建、更新删除",
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 1,
+      "skipped" : 0,
+      "passed" : 0,
+      "unknown" : 0,
+      "total" : 1
+    }
+  }, {
+    "uid" : "77bebe922c4a482e7669975330af6d15",
+    "name" : "添加产品",
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    }
+  }, {
+    "uid" : "779e12f7177f8e77f3652844360e441c",
+    "name" : "产品更新及删除",
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    }
+  }, {
+    "uid" : "5bf1b17401be5f9925b46dcb8365496a",
+    "name" : "新增型号",
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    }
+  }, {
+    "uid" : "5b70af9799b2149b0f2bcb2a414c2b6e",
+    "name" : "更新型号",
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    }
+  }, {
+    "uid" : "492425bb5265a13c95b89bded92b5b8a",
+    "name" : "excel导入型号及删除型号",
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    }
+  }, {
+    "uid" : "16e833028a46247142a58f91c29cb5d0",
+    "name" : "excel导入客户及删除",
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    }
+  }, {
+    "uid" : "8758164aaa50def4c0c72c1704992619",
+    "name" : "员工新增、更新、删除",
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    }
+  }, {
+    "uid" : "b059ffbf8c440e73981d1c703ae4a871",
+    "name" : "事件查询、确认",
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    }
+  } ]
 }

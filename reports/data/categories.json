@@ -7,13 +7,13 @@
       "name" : "IndexError: list index out of range",
       "children" : [ {
         "name" : "test_six",
-        "uid" : "696ce5af7e61156d",
+        "uid" : "610acf398646298e",
         "parentUid" : "cbf21ee610ffd376e0ce643a364ade80",
         "status" : "broken",
         "time" : {
-          "start" : 1669369869419,
-          "stop" : 1669369869593,
-          "duration" : 174
+          "start" : 1669370659295,
+          "stop" : 1669370659487,
+          "duration" : 192
         },
         "flaky" : false,
         "parameters" : [ ]
