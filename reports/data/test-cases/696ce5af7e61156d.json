@@ -1,0 +1,73 @@
+{
+  "uid" : "696ce5af7e61156d",
+  "name" : "test_six",
+  "fullName" : "test_case.TestClass#test_six",
+  "historyId" : "9c0a357a43f89da9eea6c1f8c52f4f0c",
+  "time" : {
+    "start" : 1669369869419,
+    "stop" : 1669369869593,
+    "duration" : 174
+  },
+  "status" : "broken",
+  "statusMessage" : "IndexError: list index out of range",
+  "statusTrace" : "self = <test_case.TestClass object at 0x000002A44E0F5340>\n\n    def test_six(self):\n        result,data,url = b.customer_save()\n        idresult,u,d = b.get_customer(nowtime)\n>       cus_id = idresult.json()['data']['records'][0]['id']\nE       IndexError: list index out of range\n\ntest_case.py:59: IndexError",
+  "flaky" : false,
+  "beforeStages" : [ {
+    "name" : "_session_faker",
+    "time" : {
+      "start" : 1669369867683,
+      "stop" : 1669369867788,
+      "duration" : 105
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false,
+    "stepsCount" : 0
+  } ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "suite",
+    "value" : "test_case"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestClass"
+  }, {
+    "name" : "host",
+    "value" : "zjp-wb00211"
+  }, {
+    "name" : "thread",
+    "value" : "99432-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "test_case"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ {
+      "name" : "Test defects",
+      "matchedStatuses" : [ ],
+      "flaky" : false
+    } ],
+    "tags" : [ ]
+  },
+  "source" : "696ce5af7e61156d.json",
+  "parameterValues" : [ ]
+}

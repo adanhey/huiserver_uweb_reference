@@ -1,0 +1,4 @@
+DEBUG    uweb_reference:test_case.py:51 日志时间：2022-11-25 17:51:09.415258
+DEBUG    uweb_reference:test_case.py:52 请求url：{}
+DEBUG    uweb_reference:test_case.py:53 请求数据：https://huiservertest1.iotdataserver.net/es/productModel/delete/1596079029843607554
+DEBUG    uweb_reference:test_case.py:54 请求结果：{"code":200,"msg":"删除成功！"}

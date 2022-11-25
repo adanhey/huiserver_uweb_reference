@@ -1,0 +1,8 @@
+DEBUG    uweb_reference:test_case.py:79 日志时间：2022-11-25 17:51:11.161684
+DEBUG    uweb_reference:test_case.py:80 请求url：https://huiservertest1.iotdataserver.net/es/customer/importExcel
+DEBUG    uweb_reference:test_case.py:81 请求数据：{'file': <_io.BufferedReader name='customer.xlsx'>}
+DEBUG    uweb_reference:test_case.py:82 请求结果：{"code":200,"msg":"成功","data":[""]}
+DEBUG    uweb_reference:test_case.py:83 日志时间：2022-11-25 17:51:11.161684
+DEBUG    uweb_reference:test_case.py:84 请求url：https://huiservertest1.iotdataserver.net/es/customer/delete/793576595748532224
+DEBUG    uweb_reference:test_case.py:85 请求数据：{}
+DEBUG    uweb_reference:test_case.py:86 请求结果：{"code":200,"msg":"删除成功"}
