@@ -1,19 +1,8 @@
 {
   "total" : 9,
   "items" : [ {
-    "uid" : "39ca5d965afabc9f744289553c806d11",
-    "name" : "客户创建、更新删除",
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 1,
-      "skipped" : 0,
-      "passed" : 0,
-      "unknown" : 0,
-      "total" : 1
-    }
-  }, {
-    "uid" : "77bebe922c4a482e7669975330af6d15",
-    "name" : "添加产品",
+    "uid" : "e6846c4b6fd9201967114141981f7022",
+    "name" : "更新产品属性",
     "statistic" : {
       "failed" : 0,
       "broken" : 0,
@@ -23,8 +12,8 @@
       "total" : 1
     }
   }, {
-    "uid" : "779e12f7177f8e77f3652844360e441c",
-    "name" : "产品更新及删除",
+    "uid" : "e02481b664735b5895855b1e5bf0bccb",
+    "name" : "产品新建及删除",
     "statistic" : {
       "failed" : 0,
       "broken" : 0,
@@ -34,8 +23,8 @@
       "total" : 1
     }
   }, {
-    "uid" : "5bf1b17401be5f9925b46dcb8365496a",
-    "name" : "新增型号",
+    "uid" : "7c2ef257297e665b4a8dd6f858bb83a1",
+    "name" : "新增型号及删除",
     "statistic" : {
       "failed" : 0,
       "broken" : 0,
@@ -45,8 +34,8 @@
       "total" : 1
     }
   }, {
-    "uid" : "5b70af9799b2149b0f2bcb2a414c2b6e",
-    "name" : "更新型号",
+    "uid" : "628dafced0607b81a2c7d450f1874c57",
+    "name" : "批量更新型号",
     "statistic" : {
       "failed" : 0,
       "broken" : 0,
@@ -58,6 +47,17 @@
   }, {
     "uid" : "492425bb5265a13c95b89bded92b5b8a",
     "name" : "excel导入型号及删除型号",
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    }
+  }, {
+    "uid" : "39ca5d965afabc9f744289553c806d11",
+    "name" : "客户创建、更新删除",
     "statistic" : {
       "failed" : 0,
       "broken" : 0,

@@ -1,3 +1,5 @@
+import json
+
 from for_all_interface import *
 import time
 
@@ -8,124 +10,139 @@ date = time.strftime("%Y-%m-%d")
 
 
 class Uweb_reference(Huiserver_interface):
-    def product_saveorupdate(self, type, companyId="2cde0a43-cd9c-47e8-b76e-6e2cdf2fda6e", productCode="uweb联通测试",
-                             productName="uweb联通测试", status=1, systemCode="CP%s025" % nowdate, createUser="sysadmin",
-                             createTime=nowtime,
-                             proid="790659899362619392"):
-        url = '%s/es/product/saveOrUpdate' % self.host
-        save = {
-            "systemCode": systemCode,
-            "companyId": companyId,
-            "productCode": nowtime,
-            "productName": nowtime,
-            "productModel": "751433232324997120",
-            "nickName": "群武的小公司（勿动）",
-            "customerId": "755464488561713152",
-            "picUrl": "",
+    def __init__(self):
+        super().__init__()
+        self.productType = self.dict_list("productType").json()['data']['records'][0]['id']
+        self.productname = self.dict_list("productType").json()['data']['records'][0]['dictKey']
+        self.workVoltage = self.dict_list("workVoltage").json()['data']['records'][0]['id']
+        self.workVoltagename = self.dict_list("workVoltage").json()['data']['records'][0]['dictKey']
+
+    def dict_list(self, dictCode):
+        url = '%s/es/dict/list' % self.host
+        data = {
+            "dictCode": dictCode,
+            "current": 1,
+            "size": 100,
+            "queryChildren": 'true'
         }
+        sss = str(data).replace("'true'", 'true')
+        sss = sss.replace("'", '"')
+        data = json.loads(sss)
+        result = self.post_request(url=url, json=data)
+        return result
+
+    def product_saveorupdate(self, type='update', customerName='uweb联通测试', modelName='uweb联通测试', productCode='uweb联通测试',
+                             productName='uweb联通测试', picUrl=None):
+        modelid = self.get_productmodel(modelName).json()['data']['records'][0]['id']
+        modelcode = self.get_productmodel(modelName).json()['data']['records'][0]['modelCode']
+        customerid = self.get_customer(customerName).json()['data']['records'][0]['id']
+        address = self.get_customer(customerName).json()['data']['records'][0]['address']
+        contactName = self.get_customer(customerName).json()['data']['records'][0]['contactName']
+        productinfo = self.get_product(modelName).json()
+        if type == 'update':
+            systemCode = productinfo['data']['records'][0]['systemCode']
+            proid = productinfo['data']['records'][0]['id']
+            productinfo = self.get_product(productName).json()
+            uwebDeviceId = productinfo['data']['records'][0]['uwebDeviceId']
+            iotData = productinfo['data']['records'][0]['iotData']
+            createTime = productinfo['data']['records'][0]['createTime']
+            createUser = productinfo['data']['records'][0]['createUser']
+        else:
+            systemCode = self.get_code("CP")
+            proid, uwebDeviceId, iotData = None, None, None
+            createUser, createTime = "sysadmin", nowtime
+        url = '%s/es/product/saveOrUpdate' % self.host
         data = {
             "id": proid,
+            "companyId": self.companyid,
             "createTime": createTime,
             "createUser": createUser,
             "systemCode": systemCode,
-            "productCode": "uweb联通测试",
-            "productName": "uweb联通测试",
-            "modelName": "uweb联通测试",
-            "modelCode": "uweb联通测试",
-            "productModel": "751433232324997120",
-            "productType": "750031334284808192",
-            "productTypeName": "三边封制袋机",
-            "nickName": "群武的小公司（勿动）",
-            "address": "沙县",
-            "customerId": "755464488561713152",
+            "productCode": productCode,
+            "productName": productName,
+            "modelName": modelName,
+            "modelCode": modelcode,
+            "productModel": modelid,
+            "productType": self.productType,
+            "productTypeName": self.productname,
+            "nickName": contactName,
+            "address": address,
+            "customerId": customerid,
             "buyTime": date,
             "installTime": date,
             "checkTime": date,
             "defendEndTime": date,
-            "fieldExtensions": "{\"col2\":\"1\"}",
-            "uwebDeviceId": "1042841863913406464",
-            "picUrl": "[{\"id\":\"790565655872516096\",\"url\":\"0000102074/appeal/16636617955272757.png\",\"name\":\"QQ浏览器截图20220613165958.png\"}]",
-            "iotData": {
-                "bindIotNum": 0,
-                "dataSourceNum": 3,
-                "detailList": [
-                    {
-                        "regCode": "",
-                        "sourceName": "第三个数据源"
-                    },
-                    {
-                        "regCode": "",
-                        "sourceName": "第二个数据源"
-                    },
-                    {
-                        "regCode": "",
-                        "sourceName": "群武的数据源"
-                    }
-                ],
-                "id": "1029801475262840832",
-                "status": status
-            }
+            "uwebDeviceId": uwebDeviceId,
+            "picUrl": picUrl,
+            "iotData": iotData
         }
-        if type == "save":
-            result = self.post_request(url=url, json=save)
-        else:
-            result = self.post_request(url=url, json=data)
-        return result, url, data
+        result = self.post_request(url=url, json=data)
+        return result
 
     def product_delete(self, proid):
         url = '%s/es/product/delete/%s' % (self.host, proid)
         data = {}
         result = self.get_request(url=url)
-        return result, url, data
+        return result
 
     def getDeviceStatusForApp(self):
         pass
 
-    def model_saveorupdate(self, modelCode="uweb联通测试", modelName="uweb联通测试", createTime=nowtime, updateTime=nowtime,
-                           createUser="sysadmin", updateUser="sysadmin"):
+    def model_saveorupdate(self, modelCode, modelName, createTime=nowtime, updateTime=nowtime, type='update',
+                           createUser="sysadmin", updateUser="sysadmin", proid=None, uwebModelId=None,
+                           machinePower=110, describe=None, modelPic=None, used=1, uwebSourceName=None, deleted=0):
+        # 型号创建或修改，code、proid、uwebmodelid传参时代表修改，不带时代表创建
         url = '%s/es/productModel/saveOrUpdate' % self.host
+        if type == 'update':
+            productinfo = self.get_productmodel(modelName).json()
+            uwebSourceName = productinfo['data']['records'][0]['uwebSourceName']
+            uwebModelId = productinfo['data']['records'][0]['uwebModelId']
+            code = productinfo['data']['records'][0]['sysNo']
+            proid = productinfo['data']['records'][0]['id']
+        else:
+            code = self.get_code("XH")
         data = {
-            "id": "790563245556801536",
+            "id": proid,
             "createTime": createTime,
             "updateTime": updateTime,
             "createUser": createUser,
             "updateUser": updateUser,
-            "customerCode": "0000102074",
-            "companyId": "70048941-e07c-4605-8447-2eea1a800573",
-            "sysNo": "XH20221117101711379",
+            "customerCode": self.customercode,
+            "companyId": self.companyid,
+            "sysNo": code,
             "modelName": modelName,
             "modelCode": modelCode,
-            "productType": "750031334284808192",
-            "productTypeName": "三边封制袋机",
-            "workVoltage": "750031729438576640",
-            "workVoltageName": "220V/50HZ",
-            "machinePower": "110",
-            "modelDesc": "1234",
-            "modelPic": "",
-            "used": 1,
-            "uwebModelId": "1593065683814400001",
-            "uwebSourceName": "",
-            "deleted": 0,
-            "fieldExtensions": "{\"col2\":[[\"3\"]],\"col1\":\"2022-01\",\"col5\":\"225\",\"col4\":\"\",\"col3\":\"\"}"
+            "productType": self.productType,
+            "productName": self.productname,
+            "workVoltage": self.workVoltage,
+            "workVoltageName": self.workVoltagename,
+            "machinePower": machinePower,
+            "modelDesc": describe,
+            "modelPic": modelPic,
+            "used": used,
+            "uwebModelId": uwebModelId,
+            "uwebSourceName": uwebSourceName,
+            "deleted": deleted,
         }
+        print(data)
         result = self.post_request(url=url, json=data)
-        return result, url, data
+        return result
 
-    def model_update_batch(self, modellist):
-        # 型号列表页修改
+    def model_update_batch(self, modellist, machinePower=100, systemField=1):
+        # 型号列表页修改,批量修改型号属性
         url = '%s/es/productModel/batchUpdate' % self.host
         data = {
-            "productType": "750031334284808192",
-            "productTypeName": "三边封制袋机",
-            "workVoltage": "750031782576214016",
-            "workVoltageName": "380V/50HZ",
-            "machinePower": "1",
+            "productType": self.productType,
+            "productTypeName": self.productname,
+            "workVoltage": self.workVoltage,
+            "workVoltageName": self.workVoltagename,
+            "machinePower": machinePower,
             "modelDesc": nowtime,
             "ids": modellist,
-            "systemField": 1
+            "systemField": systemField
         }
         result = self.post_request(url=url, json=data)
-        return result, url, data
+        return result
 
     def model_import_Excel(self):
         # 型号列表页导入excel
@@ -135,7 +152,12 @@ class Uweb_reference(Huiserver_interface):
             "file": file
         }
         result = self.post_request(url=url, files=data)
-        return result, url, data
+        return result
+
+    def model_delete(self,modelid):
+        url = '%s/es/productModel/delete/%s'%(self.host,modelid)
+        result = self.get_request(url=url)
+        return result
 
     def product_import_Excel(self):
         # 产品列表页导入excel
@@ -145,7 +167,7 @@ class Uweb_reference(Huiserver_interface):
             "file": file
         }
         result = self.post_request(url=url, files=data)
-        return result, url, data
+        return result
 
     def customer_update(self, cusid):
         # 客户列表编辑
@@ -227,13 +249,13 @@ class Uweb_reference(Huiserver_interface):
             "fieldExtensions": "{\"col10\":\"[{\\\"id\\\":\\\"789953936867237888\\\",\\\"url\\\":\\\"0000102074/customer/16685061608142491.gif\\\",\\\"name\\\":\\\"龙猫.gif\\\"}]\",\"col3\":\"\",\"col1\":\"11111\",\"col4\":\"21\"}"
         }
         result = self.post_request(url=url, json=data)
-        return result, url, data
+        return result
 
     def get_code(self, codetype):
         url = '%s/es/common/getCode/%s' % (self.host, codetype)
         data = {}
         result = self.get_request(url=url)
-        return result.json()['data'], url, data
+        return result.json()['data']
 
     def customer_save(self):
         url = '%s/es/customer/save' % self.host
@@ -270,10 +292,12 @@ class Uweb_reference(Huiserver_interface):
             "customerManagerPhone": "",
             "remark": "",
             "logoUrl": "",
-            "fieldExtensions": "{\"col10\":\"\",\"col9\":\"\",\"col3\":\"\",\"col8\":\"\",\"col7\":\"\",\"col1\":\"101\",\"col5\":\"\",\"col2\":\"\",\"col4\":\"452523wer\"}"
+            "fieldExtensions": "{\"col10\":\"\",\"col9\":\"\",\"col3\":\"\",\"col8\":\"\",\"col7\":\"\",\"col1\":\"1\",\"col5\":\"\",\"col2\":\"\",\"col4\":\"21\"}"
         }
+        print(data)
+        print(url)
         result = self.post_request(url=url, json=data)
-        return result, url, data
+        return result
 
     def customer_import_excel(self):
         file = open("customer.xlsx", 'rb')
@@ -282,13 +306,13 @@ class Uweb_reference(Huiserver_interface):
             "file": file
         }
         result = self.post_request(url=url, files=data)
-        return result, url, data
+        return result
 
     def customer_delete(self, cstid):
         url = '%s/es/customer/delete/%s' % (self.host, cstid)
         data = {}
         result = self.get_request(url=url)
-        return result, url, data
+        return result
 
     def employee_save(self):
         url = '%s/es/employee/saveUser' % self.host
@@ -305,7 +329,7 @@ class Uweb_reference(Huiserver_interface):
             "roleIds": "0b4dbb90-f579-4dca-93a0-e4a37b83167b"
         }
         result = self.post_request(url=url, json=data)
-        return result, url, data
+        return result
 
     def employee_update(self, empid):
         url = '%s/es/employee/update' % self.host
@@ -336,25 +360,25 @@ class Uweb_reference(Huiserver_interface):
             "supervisor": 0
         }
         result = self.post_request(url=url, json=data)
-        return result, url, data
+        return result
 
     def employee_delete(self, data):
         url = '%s/es/employee/deleteUser' % self.host
         result = self.post_request(url=url, json=data)
-        return result, url, data
+        return result
 
     def role_list(self):
         url = '%s/es/employee/getRoleListByCompanyId' % self.host
         data = {}
         result = self.get_request(url=url)
-        return result, url, data
+        return result
 
     def event_config(self):
         # iot保养提醒
         url = '%s/es/eventPageConfig/getConfig' % self.host
         data = {}
         result = self.get_request(url=url)
-        return result, url, data
+        return result
 
     def warn_batch_status(self):
         url = '%s/es/warn/batchUpdateStatus' % self.host
@@ -370,7 +394,7 @@ class Uweb_reference(Huiserver_interface):
             "handleRemark": "123"
         }
         result = self.post_request(url=url, json=data)
-        return result, url, data
+        return result
 
     def get_product(self, name):
         url = '%s/es/product/getPage' % self.host
@@ -380,7 +404,7 @@ class Uweb_reference(Huiserver_interface):
             "size": 20
         }
         result = self.post_request(url=url, json=data)
-        return result, url, data
+        return result
 
     def get_productmodel(self, name=None, current=1, size=10):
         url = '%s/es/productModel/getPage' % self.host
@@ -390,13 +414,13 @@ class Uweb_reference(Huiserver_interface):
             "size": size
         }
         result = self.post_request(url=url, json=data)
-        return result, url, data
+        return result
 
     def delete_model(self, modelid):
         url = '%s/es/productModel/delete/%s' % (self.host, modelid)
         data = {}
         result = self.get_request(url=url)
-        return result, url, data
+        return result
 
     def get_customer(self, name=None):
         url = '%s/es/customer/list' % self.host
@@ -412,8 +436,7 @@ class Uweb_reference(Huiserver_interface):
             "size": 20
         }
         result = self.post_request(url=url, json=data)
-        print(result.text,url,data)
-        return result, url, data
+        return result
 
     def get_emp(self, name="reference"):
         url = '%s/es/employee/list' % self.host
@@ -426,15 +449,16 @@ class Uweb_reference(Huiserver_interface):
             "size": 20
         }
         result = self.post_request(url=url, json=data)
-        return result, url, data
+        return result
 
 
 b = Uweb_reference()
-# print(b.product_saveorupdate(type="update").text)
-# uwebdeviceid = b.product_saveorupdate(type="save").json()['data']['uwebDeviceId']
+# print(b.dict_list("productType").text)
+# print(b.product_saveorupdate(type="update").status_code)
+# print(b.product_saveorupdate().text)
 # deviceid = b.get_product(nowtime).json()['data']['records'][0]['id']
 # print(b.product_delete(deviceid).text)
-# print(b.model_saveorupdate().text)
+# print(b.model_saveorupdate("uweb联通测试","uweb联通测试",type='save').text)
 # update_batch model
 # modelresult = b.get_productmodel(current=5,size=5).json()
 # modelidlist = []

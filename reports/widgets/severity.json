@@ -1,90 +1,90 @@
 [ {
-  "uid" : "610acf398646298e",
+  "uid" : "312fbe91f2c678ea",
   "name" : "test_six",
   "time" : {
-    "start" : 1669370659295,
-    "stop" : 1669370659487,
-    "duration" : 192
-  },
-  "status" : "broken",
-  "severity" : "normal"
-}, {
-  "uid" : "4977bdd6744828f",
-  "name" : "test_two",
-  "time" : {
-    "start" : 1669370657948,
-    "stop" : 1669370658467,
-    "duration" : 519
+    "start" : 1669622538478,
+    "stop" : 1669622540627,
+    "duration" : 2149
   },
   "status" : "passed",
   "severity" : "normal"
 }, {
-  "uid" : "eaf249cae3639e24",
-  "name" : "test_seven",
-  "time" : {
-    "start" : 1669370659613,
-    "stop" : 1669370661227,
-    "duration" : 1614
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "e7653c8dd1610de1",
+  "uid" : "c2a35fde183b4be7",
   "name" : "test_five",
   "time" : {
-    "start" : 1669370658939,
-    "stop" : 1669370659292,
-    "duration" : 353
+    "start" : 1669622538099,
+    "stop" : 1669622538476,
+    "duration" : 377
   },
   "status" : "passed",
   "severity" : "normal"
 }, {
-  "uid" : "21fca3e321e3348a",
-  "name" : "test_three",
-  "time" : {
-    "start" : 1669370658470,
-    "stop" : 1669370658641,
-    "duration" : 171
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "861d7fad7a100527",
+  "uid" : "97ca16e645b451ef",
   "name" : "test_nine",
   "time" : {
-    "start" : 1669370662065,
-    "stop" : 1669370662525,
-    "duration" : 460
+    "start" : 1669622542628,
+    "stop" : 1669622543080,
+    "duration" : 452
   },
   "status" : "passed",
   "severity" : "normal"
 }, {
-  "uid" : "30a8b6ae192fc6ee",
-  "name" : "test_product_save",
+  "uid" : "fb58b055dfe68b35",
+  "name" : "test_seven",
   "time" : {
-    "start" : 1669370657690,
-    "stop" : 1669370657946,
-    "duration" : 256
+    "start" : 1669622540629,
+    "stop" : 1669622541742,
+    "duration" : 1113
   },
   "status" : "passed",
   "severity" : "normal"
 }, {
-  "uid" : "b19c8e9539a42832",
+  "uid" : "337e23527c6b667e",
   "name" : "test_four",
   "time" : {
-    "start" : 1669370658649,
-    "stop" : 1669370658937,
-    "duration" : 288
+    "start" : 1669622537607,
+    "stop" : 1669622538097,
+    "duration" : 490
   },
   "status" : "passed",
   "severity" : "normal"
 }, {
-  "uid" : "4050929f8fa059bc",
+  "uid" : "ba0937623c605242",
+  "name" : "test_product_create_then_delete",
+  "time" : {
+    "start" : 1669622535959,
+    "stop" : 1669622537178,
+    "duration" : 1219
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "3a050c85030ddbdc",
   "name" : "test_eight",
   "time" : {
-    "start" : 1669370661230,
-    "stop" : 1669370662063,
-    "duration" : 833
+    "start" : 1669622541744,
+    "stop" : 1669622542625,
+    "duration" : 881
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "b252dd7094d98df",
+  "name" : "test_three",
+  "time" : {
+    "start" : 1669622537180,
+    "stop" : 1669622537605,
+    "duration" : 425
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "5f5da4abee36277a",
+  "name" : "test_product_save",
+  "time" : {
+    "start" : 1669622535014,
+    "stop" : 1669622535956,
+    "duration" : 942
   },
   "status" : "passed",
   "severity" : "normal"

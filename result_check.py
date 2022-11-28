@@ -1,11 +1,24 @@
+import jsonpath
 from interface_document import *
 import allure
+from interfaceresult_info import *
 
-class Result_check(Uweb_reference):
-    def code_check(self,result):
-        assert result.statuscode == 200
-    # def word_type(self,result,typedict):
-    #     for i,y in result.json().items:
-    #         for a,b in typedict.item():
-    #             if a == i:
-    #                 assert j == y
+
+def re_check(result, resultcode,interface_uri=None):
+    assert resultcode == 200
+    if interface_uri:
+        for i in result_check:
+            if i['uri'] == interface_uri:
+                for key, value in i['result_dict'].items():
+                    dd = jsonpath.jsonpath(result, '$..%s' % key)
+                    if value == "str":
+                        pass
+                    elif value == "int":
+                        pass
+                    elif value == "float":
+                        pass
+                    elif value == 'list':
+                        pass
+                    else:
+                        pass
+
