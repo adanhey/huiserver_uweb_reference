@@ -58,7 +58,7 @@ class Huiserver_interface():
         result = requests.Session().get(url=url, params=param, json=json, data=data, headers=headers, cookies=cookie)
         self.logger.debug(f"日志时间：{datetime.datetime.now()}")
         self.logger.debug(f"请求url：{url}")
-        self.logger.debug(f"请求数据：{data, param}")
+        self.logger.debug(f"请求数据：{param, json, data}")
         self.logger.debug(f"请求结果：{result.text}")
         return result
 
@@ -68,7 +68,7 @@ class Huiserver_interface():
                                          files=files)
         self.logger.debug(f"日志时间：{datetime.datetime.now()}")
         self.logger.debug(f"请求url：{url}")
-        self.logger.debug(f"请求数据：{data, param}")
+        self.logger.debug(f"请求数据：{param, json, data}")
         self.logger.debug(f"请求结果：{result.text}")
         return result
 
@@ -77,7 +77,7 @@ class Huiserver_interface():
         result = requests.Session().put(url=url, params=param, json=json, data=data, headers=headers, cookies=cookie)
         self.logger.debug(f"日志时间：{datetime.datetime.now()}")
         self.logger.debug(f"请求url：{url}")
-        self.logger.debug(f"请求数据：{data, param}")
+        self.logger.debug(f"请求数据：{param, json, data}")
         self.logger.debug(f"请求结果：{result.text}")
         return result
 
@@ -86,7 +86,7 @@ class Huiserver_interface():
         result = requests.Session().delete(url=url, params=param, json=json, data=data, headers=headers, cookies=cookie)
         self.logger.debug(f"日志时间：{datetime.datetime.now()}")
         self.logger.debug(f"请求url：{url}")
-        self.logger.debug(f"请求数据：{data, param}")
+        self.logger.debug(f"请求数据：{param, json, data}")
         self.logger.debug(f"请求结果：{result.text}")
         return result
 
@@ -94,7 +94,6 @@ class Huiserver_interface():
         cookie = self.take_cookie(user)
         result = requests.Session().patch(url=url, params=param, json=json, data=data, headers=headers, cookies=cookie)
         self.logger.debug(f"日志时间：{datetime.datetime.now()}")
-        self.logger.debug(f"请求url：{url}")
-        self.logger.debug(f"请求数据：{data, param}")
+        self.logger.debug(f"请求数据：{param, json, data}")
         self.logger.debug(f"请求结果：{result.text}")
         return result

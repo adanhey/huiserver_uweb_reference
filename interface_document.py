@@ -178,21 +178,29 @@ class Uweb_reference(Huiserver_interface):
         # 客户列表编辑
         url = '%s/es/customer/update' % self.host
         customerinfo = self.get_customer(fullName).json()
+        customervv = customerinfo['data']['records'][0]
         customerid = customerinfo['data']['records'][0]['id']
-        if nickName == None:
-            nickName = customerinfo['data']['records'][0]['nickName']
-        if contactName == None:
-            contactName = customerinfo['data']['records'][0]['contactName']
-        if phone == None:
-            phone = customerinfo['data']['records'][0]['phone']
-        if logoUrl == None:
-            logoUrl = customerinfo['data']['records'][0]['logoUrl']
-        if remark == None:
-            remark = customerinfo['data']['records'][0]['remark']
-        if organization == None:
-            organization = customerinfo['data']['records'][0]['organization']
-            organizationId = customerinfo['data']['records'][0]['organizationId']
-        else:
+        if nickName:
+            customervv['nickName'] = nickName
+        if contactName:
+            customervv['ncontactName'] = contactName
+        if phone:
+            customervv['phone'] = phone
+        if address:
+            customervv['address'] = address
+        if logoUrl:
+            customervv['logoUrl'] = logoUrl
+        if remark:
+            customervv['remark'] = remark
+        if country:
+            customervv['country'] = country
+        if city:
+            customervv['city'] = city
+        if province:
+            customervv['province'] = province
+        if area:
+            customervv['area'] = area
+        if organization:
             organizationId = None
             orginfo = self.get_org().json()
             for i in orginfo['data'][0]['children']:
@@ -200,34 +208,24 @@ class Uweb_reference(Huiserver_interface):
                     organization = i['deptName']
                     organizationId = i['id']
                     break
-        if managename == None:
-            customerManager = customerinfo['data']['records'][0]['customerManager']
-            customerManagerId = customerinfo['data']['records'][0]['customerManagerId']
-            customerManagerPhone = customerinfo['data']['records'][0]['customerManagerPhone']
-        else:
+            customervv['organization'] = organization
+            customervv['organizationId'] = organizationId
+        if managename:
             maninfo = self.get_emp(managename).json()
             customerManager = maninfo['data']['records'][0]['name']
             customerManagerId = maninfo['data']['records'][0]['id']
             customerManagerPhone = maninfo['data']['records'][0]['phone']
-        if empname == None:
-            employeeName = customerinfo['data']['records'][0]['customerManager']
-            employeeId = customerinfo['data']['records'][0]['customerManagerId']
-            employeePhone = customerinfo['data']['records'][0]['customerManagerPhone']
-        else:
+            customervv['customerManager'] = customerManager
+            customervv['customerManagerId'] = customerManagerId
+            customervv['customerManagerPhone'] = customerManagerPhone
+        if empname:
             empinfo = self.get_emp(managename).json()
             employeeName = empinfo['data']['records'][0]['name']
             employeeId = empinfo['data']['records'][0]['id']
             employeePhone = empinfo['data']['records'][0]['phone']
-        if address == None:
-            address = customerinfo['data']['records'][0]['address']
-        if country == None:
-            country = customerinfo['data']['records'][0]['address']
-        if city == None:
-            city = customerinfo['data']['records'][0]['address']
-        if area == None:
-            area = customerinfo['data']['records'][0]['address']
-        if province == None:
-            province = customerinfo['data']['records'][0]['address']
+            customervv['employeeName'] = employeeName
+            customervv['employeeId'] = employeeId
+            customervv['employeePhone'] = employeePhone
         lbl = []
         if labelList:
             dict_info = self.dict_list("customerLabel").json()
@@ -239,31 +237,8 @@ class Uweb_reference(Huiserver_interface):
                             "labelId": j['id']
                         }
                         lbl.append(labeldict)
-        data = {
-            "id": customerid,
-            "companyId": self.companyid,
-            "customerCode": self.customercode,
-            "fullName": fullName,
-            "nickName": nickName,
-            "labelList": lbl,
-            "contactName": contactName,
-            "phone": phone,
-            "country": country,
-            "province": province,
-            "city": city,
-            "area": area,
-            "address": address,
-            "organization": organization,
-            "organizationId": organizationId,
-            "employeeId": employeeId,
-            "employeeName": employeeName,
-            "employeePhone": employeePhone,
-            "customerManagerId": customerManagerId,
-            "customerManager": customerManager,
-            "customerManagerPhone": customerManagerPhone,
-            "remark": remark,
-            "logoUrl": logoUrl,
-        }
+            customervv['labelList']=lbl
+        data = customervv
         result = self.post_request(url=url, json=data)
         return result
 
@@ -360,39 +335,25 @@ class Uweb_reference(Huiserver_interface):
         result = self.post_request(url=url, json=data)
         return result
 
-    def delete_user(self,userid):
-        url = '%s/uweb-monitor/user/deleteUser?userId=%s'%(self.host,userid)
+    def delete_user(self, userid):
+        url = '%s/uweb-monitor/user/deleteUser?userId=%s' % (self.host, userid)
         result = self.delete_request(url=url)
         return result
 
-    def employee_update(self, empid):
+    def employee_update(self, basename="uwebreference", name=None, jobNumber=None, birthday=None, sex=None,
+                        used=None):
         url = '%s/es/employee/update' % self.host
-        data = {
-            "id": empid,
-            "createTime": "2022-11-17 07:00:59",
-            "createUser": "sysadmin",
-            "updateUser": "sysadmin",
-            "customerCode": "0000102074",
-            "companyId": "70048941-e07c-4605-8447-2eea1a800573",
-            "name": "uwebreference",
-            "userName": "",
-            "userId": "",
-            "jobNumber": "12002312",
-            "birthday": "",
-            "sex": 1,
-            "phone": "",
-            "deptId": "755413422017126400",
-            "deptName": "测试环境1",
-            "deptIds": "_750492929296211968",
-            "used": 1,
-            "openService": 1,
-            "jobKey": "4",
-            "jobName": "普通职员",
-            "serverOrderNum": 0,
-            "assistOrderNum": 0,
-            "email": "",
-            "supervisor": 0
-        }
+        empinfo = self.get_emp(basename).json()
+        empdic = empinfo['data']['records'][0]
+        data = empdic
+        if name:
+            data['name'] = name
+        if jobNumber:
+            data['jobNumber'] = jobNumber
+        if birthday:
+            data['sex'] = sex
+        if used:
+            data['used'] = used
         result = self.post_request(url=url, json=data)
         return result
 
@@ -410,6 +371,26 @@ class Uweb_reference(Huiserver_interface):
         # iot保养提醒
         url = '%s/es/eventPageConfig/getConfig' % self.host
         result = self.get_request(url=url)
+        return result
+
+    def warn_list(self, current=1, eventType=2, size=20, status=1, endTime=nowtime, productCode=None, productName=None,
+                  customerId=None, levelIds=None):
+        startTime = datetime.datetime.now() - datetime.timedelta(days=30)
+        startTime = startTime.strftime("%Y-%m-%d %H:%M:%S")
+        url = '%s/es/warn/list' % self.host
+        data = {
+            "current": current,
+            "eventType": eventType,
+            "status": status,
+            "productCode": productCode,
+            "productName": productName,
+            "customerId": customerId,
+            "startTime": startTime,
+            "endTime": endTime,
+            "levelIds": levelIds,
+            "size": size
+        }
+        result = self.post_request(url=url,json=data)
         return result
 
     def warn_batch_status(self, eventIds, ids, eventType=2, handleStatus=2, handleRemark="123"):
@@ -516,7 +497,7 @@ b = Uweb_reference()
 # cus_id = b.get_customer("uweb_reference").json()['data']['records'][0]['id']
 # print(b.customer_delete(cus_id).text)
 # 用户
-print(b.employee_save("11vv1", "c1ced5", "acd41e1v").text)
+# print(b.employee_save("11vv1", "c1ced5", "acd41e1v").text)
 # print(b.get_emp().text)
 # data = b.get_emp().json()['data']['records'][0]
 # print(b.employee_delete(data).text)

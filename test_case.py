@@ -42,10 +42,9 @@ class TestClass:
 
     @allure.story("客户创建、更新删除")
     def test_customer_create_update_delete(self):
-        result = b.customer_save()
-        print(result.text)
-        cus_id = b.get_customer(nowtime).json()['data']['records'][0]['id']
-        updateresult = b.customer_update(cus_id)
+        result = b.customer_save("whatever1","whatever1","cs","群武的组织")
+        cus_id = b.get_customer("whatever1").json()['data']['records'][0]['id']
+        updateresult = b.customer_update("whatever1")
         delete_result = b.customer_delete(cus_id)
         re_check(result.json(),result.status_code)
         re_check(updateresult.json(),updateresult.status_code)
@@ -61,11 +60,11 @@ class TestClass:
 
     @allure.story("员工新增、更新、删除")
     def test_emp_create_update_delete(self):
-        result = b.employee_save()
+        result = b.employee_save("whatever1","whatever1","abcd123456")
         empid = b.get_emp().json()['data']['records'][0]['id']
         data = b.get_emp().json()['data']['records'][0]
         result_delete = b.employee_delete(data)
-        result_update = b.employee_update(empid)
+        result_update = b.employee_update()
         re_check(result.json(),result.status_code)
         re_check(result_delete.json(),result_delete.status_code)
         re_check(result_update.json(),result_update.status_code)
@@ -73,8 +72,11 @@ class TestClass:
     @allure.story("事件查询、确认")
     def test_warn_list_comfirm(self):
         result = b.role_list()
+        # warninfo = b.warn_list().json()
+        # eventid = [warninfo['data']['records'][0]['_id']]
+        # warnid = [warninfo['data']['records'][0]['id']]
         config_result = b.event_config()
-        warn_result = b.warn_batch_status()
+        warn_result = b.warn_batch_status(["6374a65a88b6585ebcdfab1a"],["1042483967971885056"])
         re_check(result.json(),result.status_code)
         re_check(config_result.json(),config_result.status_code)
         re_check(warn_result.json(),warn_result.status_code)
