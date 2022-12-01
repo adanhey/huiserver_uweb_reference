@@ -7,109 +7,109 @@
       "name" : "TestClass",
       "children" : [ {
         "name" : "test_product_save",
-        "uid" : "f66bf2ceb73c75d0",
+        "uid" : "f2a41078e68288f4",
         "parentUid" : "c386f23b2e5ff9a823f618171b1898ac",
         "status" : "passed",
         "time" : {
-          "start" : 1669863814597,
-          "stop" : 1669863815509,
-          "duration" : 912
+          "start" : 1669877662504,
+          "stop" : 1669877663417,
+          "duration" : 913
         },
         "flaky" : false,
         "parameters" : [ ]
       }, {
         "name" : "test_product_create_then_delete",
-        "uid" : "453e0aafcc63ebcf",
+        "uid" : "a9b1691edbc71599",
         "parentUid" : "c386f23b2e5ff9a823f618171b1898ac",
         "status" : "passed",
         "time" : {
-          "start" : 1669863815511,
-          "stop" : 1669863816679,
-          "duration" : 1168
+          "start" : 1669877663420,
+          "stop" : 1669877664712,
+          "duration" : 1292
         },
         "flaky" : false,
         "parameters" : [ ]
       }, {
         "name" : "test_model_create_then_delete",
-        "uid" : "b684087a28e996b",
+        "uid" : "46ea94a6af606274",
         "parentUid" : "c386f23b2e5ff9a823f618171b1898ac",
         "status" : "passed",
         "time" : {
-          "start" : 1669863816681,
-          "stop" : 1669863817147,
-          "duration" : 466
+          "start" : 1669877664714,
+          "stop" : 1669877665246,
+          "duration" : 532
         },
         "flaky" : false,
         "parameters" : [ ]
       }, {
         "name" : "test_model_update_batch",
-        "uid" : "ca375b61f01b127",
+        "uid" : "dbcbb53999eb8a43",
         "parentUid" : "c386f23b2e5ff9a823f618171b1898ac",
         "status" : "passed",
         "time" : {
-          "start" : 1669863817149,
-          "stop" : 1669863817524,
-          "duration" : 375
+          "start" : 1669877665248,
+          "stop" : 1669877665724,
+          "duration" : 476
         },
         "flaky" : false,
         "parameters" : [ ]
       }, {
         "name" : "test_model_import_then_delete",
-        "uid" : "c2f8c99097651e03",
+        "uid" : "7063d133e5029385",
         "parentUid" : "c386f23b2e5ff9a823f618171b1898ac",
         "status" : "passed",
         "time" : {
-          "start" : 1669863817527,
-          "stop" : 1669863817965,
-          "duration" : 438
+          "start" : 1669877665728,
+          "stop" : 1669877666225,
+          "duration" : 497
         },
         "flaky" : false,
         "parameters" : [ ]
       }, {
         "name" : "test_customer_create_update_delete",
-        "uid" : "1a1ca5a592628ebe",
+        "uid" : "2bfba6cd1c2419ec",
         "parentUid" : "c386f23b2e5ff9a823f618171b1898ac",
         "status" : "passed",
         "time" : {
-          "start" : 1669863817967,
-          "stop" : 1669863821816,
-          "duration" : 3849
+          "start" : 1669877666228,
+          "stop" : 1669877670187,
+          "duration" : 3959
         },
         "flaky" : false,
         "parameters" : [ ]
       }, {
         "name" : "test_customer_import_and_delete",
-        "uid" : "fc281b8b311b6e90",
+        "uid" : "8dcab316a06085ea",
         "parentUid" : "c386f23b2e5ff9a823f618171b1898ac",
         "status" : "passed",
         "time" : {
-          "start" : 1669863821819,
-          "stop" : 1669863822879,
-          "duration" : 1060
+          "start" : 1669877670190,
+          "stop" : 1669877671475,
+          "duration" : 1285
         },
         "flaky" : false,
         "parameters" : [ ]
       }, {
         "name" : "test_emp_create_update_delete",
-        "uid" : "73615a17eabb7621",
+        "uid" : "ddabe99127ad40e1",
         "parentUid" : "c386f23b2e5ff9a823f618171b1898ac",
         "status" : "passed",
         "time" : {
-          "start" : 1669863822881,
-          "stop" : 1669863824261,
-          "duration" : 1380
+          "start" : 1669877671478,
+          "stop" : 1669877672889,
+          "duration" : 1411
         },
         "flaky" : false,
         "parameters" : [ ]
       }, {
         "name" : "test_warn_list_comfirm",
-        "uid" : "bcfc09a42f83f2d5",
+        "uid" : "deebce23920aebe7",
         "parentUid" : "c386f23b2e5ff9a823f618171b1898ac",
         "status" : "passed",
         "time" : {
-          "start" : 1669863824263,
-          "stop" : 1669863824706,
-          "duration" : 443
+          "start" : 1669877672893,
+          "stop" : 1669877673282,
+          "duration" : 389
         },
         "flaky" : false,
         "parameters" : [ ]
